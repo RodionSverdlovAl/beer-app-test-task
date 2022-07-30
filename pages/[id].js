@@ -1,10 +1,14 @@
 import { useEffect } from "react";
 
 export const getStaticPaths = async () => {
-    const res = await fetch('https://api.punkapi.com/v2/beers');
-    const data = await res.json();
+    let beers = [];
+    for(let i=0; i<5; i++){
+        const res = await fetch(`https://api.punkapi.com/v2/beers?page=${i+1}&per_page=80`);
+        const data =  await res.json();
+        beers = [...beers, ...data]
+    }
   
-    const paths = data.map(beer => {
+    const paths = beers.map(beer => {
       return {
         params: { id: beer.id.toString() }
       }
