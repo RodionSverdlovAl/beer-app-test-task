@@ -35,7 +35,10 @@ const Beer = ({beer}) =>{
         console.log(beer)
     },[])
     return(
-        <div>Название: {beer[0].name}</div>
+        <main>
+          <div>Название: {beer[0].name}</div>
+        </main>
+        
     )
 }
 export default Beer

@@ -37,11 +37,20 @@ export default function Home({beers}) {
     }
   }
 
+  const [value, setValue] = useState('');
+
+  const filtredBeers = beers.filter(beer =>{
+    return beer.name.toLowerCase().includes(value.toLocaleLowerCase())
+  })
+
   return (
     <div>
         <main>
-         <input type='text' placeholder='Поиск пива'></input>
-         <BeerList beers={items}/>
+         <input type='text' placeholder='Поиск пива' onChange={(e)=>{setValue(e.target.value)}}></input>
+         {
+          value.length ? <BeerList beers = {filtredBeers}/> : <BeerList beers={items}/>
+         }
+        
         </main>
     </div>
   )
