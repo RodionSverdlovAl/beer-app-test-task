@@ -49,7 +49,7 @@ const Beer = ({beer}) =>{
                
                 <ul>
                 <p>Food pairing:</p>
-                  {beer[0].food_pairing.map(li=> <li>{li}</li>)}
+                  {beer[0].food_pairing.map(li=> <li key={li}>{li}</li>)}
                 </ul>
             </div>
           </div>

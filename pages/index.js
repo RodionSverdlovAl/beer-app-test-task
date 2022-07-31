@@ -1,5 +1,3 @@
-import Head from 'next/head'
-import Image from 'next/image'
 import BeerList from '../components/BeerList'
 import { useEffect, useState } from 'react';
 import axios from 'axios'
@@ -58,15 +56,23 @@ export default function Home({beers}) {
 
 // тут получаем фулл  массив для поиска а для рендера будет по типу постраничной пагинации
 export async function getStaticProps() {
-  let beers = [];
-  for(let i=0; i<5; i++){
-    const res = await fetch(`https://api.punkapi.com/v2/beers?page=${i+1}&per_page=80`);
-    const data =  await res.json();
-    beers = [...beers, ...data]
-  }
-  return {
-    props: {
-      beers: beers
-    },
+  try{
+    let beers = [];
+    for(let i=0; i<5; i++){
+      const res = await fetch(`https://api.punkapi.com/v2/beers?page=${i+1}&per_page=80`);
+      const data =  await res.json();
+      beers = [...beers, ...data]
+    }
+    return {
+      props: {
+        beers: beers
+      },
+    }
+  }catch{
+    return {
+      props: {
+        beers: null
+      },
+    }
   }
 }
