@@ -47,7 +47,6 @@ main{
         border: 2px teal solid;
         border-radius: 5px;
     }
-    justify-content: center;
     .beer-item{
         width: 500px;
         margin: 20px;
@@ -67,6 +66,25 @@ main{
             margin: 20px;
         }
         .beer-info{
+            margin: 20px;
+        }
+    }
+    h1{
+        margin: 20px;
+    }
+    .beer-page{
+        .description{
+            width: 800px;
+            margin-left: 150px;
+            margin-top: 50px;
+        }
+       
+        img{
+            width: 200px;
+        }
+        display: flex;
+        margin: 20px;
+        ul{
             margin: 20px;
         }
     }
